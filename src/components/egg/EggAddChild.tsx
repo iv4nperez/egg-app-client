@@ -29,7 +29,7 @@ interface userActive {
 export const EggAddChild = ({ className }: IProps) => {
     const dispatch = useDispatch();
 
-    const { email, name, apellido, dni, password, uid }: { email: string, name: string, apellido: string, dni: string, password: string, uid: string } = useSelector((state: any) => state.auth);
+    const { email, name, apellido, dni, password, uid, role }: { email: string, name: string, apellido: string, dni: string, password: string, uid: string, role: string } = useSelector((state: any) => state.auth);
     const { activeUserForEdit, activeAdmin }: { activeUserForEdit: userActive, activeAdmin: boolean } = useSelector((state: any) => state.users);
     const { emailValid }: { emailValid: { correoEnUso: boolean, message: string } } = useSelector((state: any) => state.ui);
     const [edit, setEdit] = useState<boolean>(false)
@@ -162,6 +162,7 @@ export const EggAddChild = ({ className }: IProps) => {
             <div className={className}>
                 <div style={{ display: 'flex', flexDirection: 'row', gap: '10px 20px' }}>
                     <EggTextField
+                        disabled={ role !== 'ADMIN_ROLE' }
                         autoComplete="off"
                         placeholder="Nombre"
                         {...getFieldProps('nombre')}
@@ -170,6 +171,7 @@ export const EggAddChild = ({ className }: IProps) => {
                     ></EggTextField>
 
                     <EggTextField
+                        disabled={ role !== 'ADMIN_ROLE' }
                         autoComplete="off"
                         placeholder="Apellido"
                         {...getFieldProps('apellido')}
@@ -180,6 +182,7 @@ export const EggAddChild = ({ className }: IProps) => {
 
                 <div>
                     <EggTextField
+                        disabled={ role !== 'ADMIN_ROLE' }
                         autoComplete="off"
                         placeholder="DNI"
                         {...getFieldProps('dni')}
@@ -208,11 +211,14 @@ export const EggAddChild = ({ className }: IProps) => {
                     ></EggTextField>
                 </div>
 
-
-                <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'flex-end', gap: '10px 20px' }}>
+               <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'flex-end', gap: '10px 20px' }}>
                     <EggButton type="button" width="100px" onClick={handleShowForm} >Salir</EggButton>
-                    <EggButton type="submit" width="100px">Guardar</EggButton>
-                </div>
+                    {
+                         role === 'ADMIN_ROLE' && (<EggButton type="submit" width="100px">Guardar</EggButton>)
+                    }
+                </div>)
+                
+                
             </div>
         </form>
     )

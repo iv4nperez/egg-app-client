@@ -12,7 +12,7 @@ interface IProps {
 
 export const EggListChild = ({ className }: IProps) => {
     const dispatch = useDispatch();
-    const { email }: { email: string } = useSelector( (state: any) => state.auth );
+    const { email, role }: { email: string, role: string } = useSelector( (state: any) => state.auth );
     const { listUsers }: { listUsers: any } = useSelector( (state: any) => state.users );
 
     
@@ -50,10 +50,15 @@ export const EggListChild = ({ className }: IProps) => {
                 
             }
 
-        <div className="animate__animated animate__fadeIn animate__faster"  style={{display: 'flex', justifyContent: 'center'}}> 
-            <EggButton className="mr-2" onClick={previousPage} disabled={!listUsers?.hasPrevPage}  width="250" >Previous Page</EggButton>
-            <EggButton onClick={nextPage}  disabled={!listUsers?.hasNextPage}  width="250">Next Page</EggButton>
-        </div>
+            {
+                role === 'ADMIN_ROLE' && (<div className="animate__animated animate__fadeIn animate__faster"  style={{display: 'flex', justifyContent: 'center'}}> 
+                    <EggButton className="mr-2" onClick={previousPage} disabled={!listUsers?.hasPrevPage}  width="250" >Previous Page</EggButton>
+                    <EggButton onClick={nextPage}  disabled={!listUsers?.hasNextPage}  width="250">Next Page</EggButton>
+                </div>)
+                        
+            }
+
+        
             
         </div>
     )
