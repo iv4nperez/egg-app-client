@@ -216,9 +216,7 @@ export const EggAddChild = ({ className }: IProps) => {
                     {
                          role === 'ADMIN_ROLE' && (<EggButton type="submit" width="100px">Guardar</EggButton>)
                     }
-                </div>)
-                
-                
+                </div>
             </div>
         </form>
     )
