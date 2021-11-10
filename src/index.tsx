@@ -1,17 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import './styles/styles.scss';
+import EggApp from './EggApp';
+
+
+import './assets/fonts/ProductSans-Black.woff'
+import './assets/fonts/ProductSans-BlackItalic.woff'
+import './assets/fonts/ProductSans-Bold.woff'
+import './assets/fonts/ProductSans-BoldItalic.woff'
+import './assets/fonts/ProductSans-Italic.woff'
+import './assets/fonts/ProductSans-Medium.woff'
+import './assets/fonts/ProductSans-Regular.woff'
+import './assets/fonts/ProductSans-Thin.woff'
+
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <EggApp />
   </React.StrictMode>,
   document.getElementById('root')
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+
